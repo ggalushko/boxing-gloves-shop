@@ -8,15 +8,17 @@ import Cart from "./components/Cart";
 
 function App() {
   return (
-    <>
+    <BrowserRouter>
       <Header></Header>
       <ProductsProvider>
         <CartProvider>
-          <CardList></CardList>
-          <Cart></Cart>
+          <Routes>
+            <Route path="/shop" element={<CardList/>}></Route>
+            <Route path="/cart" element={<Cart/>}></Route>
+          </Routes>
         </CartProvider>
       </ProductsProvider>
-    </>
+    </BrowserRouter>
   );
 }
 
