@@ -1,7 +1,6 @@
 import { createContext, ReactNode, useMemo, useReducer } from "react";
 
 enum ACTIONS {
-  ADD = "ADD",
   REMOVE = "REMOVE",
   QUANITITY = "QUANTITY",
 }
@@ -22,7 +21,6 @@ type Cart = {
 type CartAction = {
   type: string;
   item: CartItem;
-  quantity?: number;
 };
 
 function reducer(cart: Cart, action: CartAction): Cart {
@@ -44,21 +42,9 @@ function reducer(cart: Cart, action: CartAction): Cart {
       };
     }
 
-    case ACTIONS.ADD: {
-      return {
-        items: [...cart.items, action.item],
-        totalItems: getItemsAmount(cart),
-        totalPrice: getItemsPrice(cart),
-      };
-    }
-
     case ACTIONS.QUANITITY: {
-      const itemToChange = cart.items.find(
-        (item) => item.id === action.item.id
-      )!;
-      itemToChange.quantity = action.quantity!;
       return {
-        items: [...getFilteredItems(cart), itemToChange],
+        items: [...getFilteredItems(cart), action.item],
         totalItems: getItemsAmount(cart),
         totalPrice: getItemsPrice(cart),
       };
@@ -90,11 +76,17 @@ const initCartContextState = {
   reducerActions: ACTIONS,
 };
 
-const initCart: Cart = {
+const emptyCart: Cart = {
   items: [],
   totalItems: 0,
   totalPrice: 0,
 };
+
+const localStorageIsEmpty = !localStorage.getItem("cart");
+
+const initData = localStorageIsEmpty
+  ? emptyCart
+  : JSON.parse(localStorage.getItem("cart")!);
 
 export const CartContext = createContext<UseCartReducer>(initCartContextState);
 type ContextChildren = {
@@ -103,7 +95,7 @@ type ContextChildren = {
 
 export default function CartProvider({ children }: ContextChildren) {
   return (
-    <CartContext.Provider value={useCartReducer(initCart)}>
+    <CartContext.Provider value={useCartReducer(initData)}>
       {children}
     </CartContext.Provider>
   );
