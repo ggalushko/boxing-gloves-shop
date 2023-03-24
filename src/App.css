@@ -1,0 +1,9 @@
+#root {
+  max-width: 1280px;
+  text-align: center;
+}
+
+.zhopa {
+  display: flex;
+  flex-direction: row;
+}
