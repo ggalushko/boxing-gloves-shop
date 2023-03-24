@@ -8,12 +8,12 @@ type CardProps = {
 };
 
 function Card({ id, title, price }: CardProps) {
-  const context = useContext(CartContext);
+  const cartContext = useContext(CartContext);
   useEffect(
-    () => localStorage.setItem("cart", JSON.stringify(context.cartState)),
-    [context.cartState]
+    () => localStorage.setItem("cart", JSON.stringify(cartContext.cartState)),
+    [cartContext.cartState]
   );
-  const inCart = context.cartState.items.find((item) => item.id === id);
+  const inCart = cartContext.cartState.items.find((item) => item.id === id);
   return (
     <article className="bg-white text-black rounded-md mt-3 w-[250px] h-[400px] flex flex-col ">
       <img
@@ -43,8 +43,8 @@ function Card({ id, title, price }: CardProps) {
         <button
           className="bg-green-500 text-white rounded-md p-4 hover:opacity-50 transition-opacity duration-500 mb-0"
           onClick={() => {
-            context.dispatch({
-              type: context.reducerActions.QUANITITY,
+            cartContext.dispatch({
+              type: cartContext.reducerActions.QUANITITY,
               item: { id: id, name: title, quantity: 1, price: price },
             });
           }}
@@ -56,14 +56,14 @@ function Card({ id, title, price }: CardProps) {
   );
 
   function updateQuantity(action: "add" | "delete") {
-    const itemToChange = context.cartState.items.find((item) => item.id === id);
+    const itemToChange = cartContext.cartState.items.find((item) => item.id === id);
     const currQuantity = itemToChange!.quantity;
 
-    console.log(context.cartState.items);
+    console.log(cartContext.cartState.items);
     switch (action) {
       case "add":
-        context.dispatch({
-          type: context.reducerActions.QUANITITY,
+        cartContext.dispatch({
+          type: cartContext.reducerActions.QUANITITY,
           item: {
             id: id,
             name: title,
@@ -74,8 +74,8 @@ function Card({ id, title, price }: CardProps) {
         break;
       case "delete":
         currQuantity - 1 > 0
-          ? context.dispatch({
-              type: context.reducerActions.QUANITITY,
+          ? cartContext.dispatch({
+              type: cartContext.reducerActions.QUANITITY,
               item: {
                 id: id,
                 name: title,
@@ -83,8 +83,8 @@ function Card({ id, title, price }: CardProps) {
                 price: price,
               },
             })
-          : context.dispatch({
-              type: context.reducerActions.REMOVE,
+          : cartContext.dispatch({
+              type: cartContext.reducerActions.REMOVE,
               item: {
                 id: id,
                 name: title,
