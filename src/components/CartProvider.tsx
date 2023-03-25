@@ -1,4 +1,10 @@
-import { createContext, ReactNode, useMemo, useReducer } from "react";
+import {
+  createContext,
+  ReactNode,
+  useMemo,
+  useReducer,
+  useEffect,
+} from "react";
 
 enum ACTIONS {
   REMOVE = "REMOVE",
@@ -24,29 +30,29 @@ type CartAction = {
 };
 
 function reducer(cart: Cart, action: CartAction): Cart {
-  const getFilteredItems = (cart: Cart) =>
-    cart.items.filter((item) => item.id !== action.item.id);
-  const getItemsPrice = (cart: Cart) =>
-    cart.items.reduce(
-      (counter, item) => counter + item.price * item.quantity,
-      0
-    );
-  const getItemsAmount = (cart: Cart) => cart.items.length;
+  const getFilteredItems = (items: CartItem[]) =>
+    items.filter((item) => item.id !== action.item.id);
+  const getItemsPrice = (items: CartItem[]) =>
+    items.reduce((counter, item) => counter + item.price * item.quantity, 0);
+  const getItemsAmount = (items: CartItem[]) =>
+    items.reduce((counter, item) => counter + item.quantity, 0);
 
   switch (action.type) {
     case ACTIONS.REMOVE: {
+      const newItems = getFilteredItems(cart.items);
       return {
-        items: getFilteredItems(cart),
-        totalItems: getItemsAmount(cart),
-        totalPrice: getItemsPrice(cart),
+        items: newItems,
+        totalItems: getItemsAmount(newItems),
+        totalPrice: getItemsPrice(newItems),
       };
     }
 
     case ACTIONS.QUANITITY: {
+      const newItems = [...getFilteredItems(cart.items), action.item];
       return {
-        items: [...getFilteredItems(cart), action.item],
-        totalItems: getItemsAmount(cart),
-        totalPrice: getItemsPrice(cart),
+        items: newItems,
+        totalItems: getItemsAmount(newItems),
+        totalPrice: getItemsPrice(newItems),
       };
     }
     default:
@@ -56,6 +62,10 @@ function reducer(cart: Cart, action: CartAction): Cart {
 
 function useCartReducer(initState: Cart) {
   const [cartState, dispatch] = useReducer(reducer, initState);
+  useEffect(
+    () => localStorage.setItem("cart", JSON.stringify(cartState)),
+    [cartState]
+  );
 
   const reducerActions = useMemo(() => {
     return ACTIONS;
@@ -64,7 +74,7 @@ function useCartReducer(initState: Cart) {
   return { cartState, dispatch, reducerActions };
 }
 
-type UseCartReducer = ReturnType<typeof useCartReducer>;
+export type UseCartReducer = ReturnType<typeof useCartReducer>;
 
 const initCartContextState = {
   cartState: {
