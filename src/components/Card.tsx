@@ -1,5 +1,6 @@
 import { useContext, useEffect } from "react";
 import { CartContext } from "./CartProvider";
+import { updateQuantity } from "../functions/updateQuantity";
 
 type CardProps = {
   id: number;
@@ -9,10 +10,6 @@ type CardProps = {
 
 function Card({ id, title, price }: CardProps) {
   const cartContext = useContext(CartContext);
-  useEffect(
-    () => localStorage.setItem("cart", JSON.stringify(cartContext.cartState)),
-    [cartContext.cartState]
-  );
   const inCart = cartContext.cartState.items.find((item) => item.id === id);
   return (
     <article className="bg-white text-black rounded-md mt-3 w-[250px] h-[400px] flex flex-col ">
@@ -23,18 +20,23 @@ function Card({ id, title, price }: CardProps) {
       />
       <h3 className="mb-2">{title}</h3>
       <p className="mb-2">{price}$</p>
+
       {inCart ? (
         <div className="flex justify-evenly">
           <p>In cart</p>
           <button
             className="bg-green-500 w-20"
-            onClick={() => updateQuantity("add")}
+            onClick={() =>
+              updateQuantity("add", cartContext, { id, name: title, price })
+            }
           >
             +
           </button>
           <button
             className="bg-red-500 w-20"
-            onClick={() => updateQuantity("delete")}
+            onClick={() =>
+              updateQuantity("delete", cartContext, { id, name: title, price })
+            }
           >
             -
           </button>
@@ -54,47 +56,6 @@ function Card({ id, title, price }: CardProps) {
       )}
     </article>
   );
-
-  function updateQuantity(action: "add" | "delete") {
-    const itemToChange = cartContext.cartState.items.find((item) => item.id === id);
-    const currQuantity = itemToChange!.quantity;
-
-    console.log(cartContext.cartState.items);
-    switch (action) {
-      case "add":
-        cartContext.dispatch({
-          type: cartContext.reducerActions.QUANITITY,
-          item: {
-            id: id,
-            name: title,
-            quantity: currQuantity + 1,
-            price: price,
-          },
-        });
-        break;
-      case "delete":
-        currQuantity - 1 > 0
-          ? cartContext.dispatch({
-              type: cartContext.reducerActions.QUANITITY,
-              item: {
-                id: id,
-                name: title,
-                quantity: currQuantity - 1,
-                price: price,
-              },
-            })
-          : cartContext.dispatch({
-              type: cartContext.reducerActions.REMOVE,
-              item: {
-                id: id,
-                name: title,
-                quantity: currQuantity,
-                price: price,
-              },
-            });
-        break;
-    }
-  }
 }
 
 export default Card;
