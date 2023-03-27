@@ -1,23 +1,14 @@
 import { useContext } from "react";
+import CartCheckout from "./CartCheckout";
 import CartElement from "./CartElement";
+import CartProducts from "./CartProducts";
 import { CartContext } from "./CartProvider";
 
 function Cart() {
-  const cartItems = useContext(CartContext).cartState.items;
   return (
-    <div>
-      <ol>
-        {cartItems.map((item) => (
-          <li key={item.id}>
-            <CartElement
-              id={item.id}
-              name={item.name}
-              quantity={item.quantity}
-              price={item.price}
-            ></CartElement>
-          </li>
-        ))}
-      </ol>
+    <div className="flex justify-center m-auto w-fit gap-10 mt-10">
+      <CartProducts></CartProducts>
+      <CartCheckout></CartCheckout>
     </div>
   );
 }
