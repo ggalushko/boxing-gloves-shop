@@ -1,4 +1,5 @@
-import React, { createContext, ReactElement, ReactNode, useState } from "react";
+import { createContext, ReactElement, ReactNode, useState } from "react";
+import { products } from "../data/products";
 
 type Product = {
   id: number;
@@ -10,14 +11,7 @@ type ContextChildren = {
   children?: ReactNode;
 };
 
-const initProducts: Product[] = [
-  { id: 0, name: "Cleto Reyes", price: 149.99 },
-  { id: 1, name: "Twins Special", price: 99.99 },
-  { id: 2, name: "Everlast", price: 69.99 },
-  { id: 3, name: "Hayabusa", price: 199.99 },
-  { id: 4, name: "Fairtex", price: 49.99 },
-  { id: 5, name: "Grant", price: 1999.99 },
-];
+const initProducts: Product[] = products;
 
 export const ProductsContext = createContext<Product[]>([
   { id: -1, name: "", price: 0 },
