@@ -1,4 +1,4 @@
-import { useContext, useEffect } from "react";
+import { useContext } from "react";
 import { CartContext } from "./CartProvider";
 import { updateQuantity } from "../functions/updateQuantity";
 
@@ -11,8 +11,9 @@ type CardProps = {
 function Card({ id, title, price }: CardProps) {
   const cartContext = useContext(CartContext);
   const inCart = cartContext.cartState.items.find((item) => item.id === id);
+  const amountInCart = inCart?.quantity.toString() || "";
   return (
-    <article className="bg-white text-black rounded-md mt-3 w-[250px] h-[400px] flex flex-col ">
+    <article className="bg-white text-black rounded-md mt-3 w-[250px] h-[400px] flex flex-col hover:scale-105 transition-transform duration-200">
       <img
         src={`../../src/images/id${id}.jpg`}
         alt={`${title} boxing gloves`}
@@ -23,9 +24,9 @@ function Card({ id, title, price }: CardProps) {
 
       {inCart ? (
         <div className="flex justify-evenly">
-          <p>In cart</p>
+          <p>{amountInCart} In cart</p>
           <button
-            className="bg-green-500 w-20"
+            className="bg-green-500 w-12"
             onClick={() =>
               updateQuantity("add", cartContext, { id, name: title, price })
             }
@@ -33,7 +34,7 @@ function Card({ id, title, price }: CardProps) {
             +
           </button>
           <button
-            className="bg-red-500 w-20"
+            className="bg-red-500 w-12"
             onClick={() =>
               updateQuantity("delete", cartContext, { id, name: title, price })
             }

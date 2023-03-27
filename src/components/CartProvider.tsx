@@ -33,7 +33,11 @@ function reducer(cart: Cart, action: CartAction): Cart {
   const getFilteredItems = (items: CartItem[]) =>
     items.filter((item) => item.id !== action.item.id);
   const getItemsPrice = (items: CartItem[]) =>
-    items.reduce((counter, item) => counter + item.price * item.quantity, 0);
+    parseFloat(
+      items
+        .reduce((counter, item) => counter + item.price * item.quantity, 0)
+        .toFixed(2)
+    );
   const getItemsAmount = (items: CartItem[]) =>
     items.reduce((counter, item) => counter + item.quantity, 0);
 
