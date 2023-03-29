@@ -1,8 +1,5 @@
-import { useContext } from "react";
 import CartCheckout from "./CartCheckout";
-import CartElement from "./CartElement";
 import CartProducts from "./CartProducts";
-import { CartContext } from "./CartProvider";
 
 function Cart() {
   return (
