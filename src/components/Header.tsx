@@ -1,15 +1,19 @@
-import { useContext, useState } from "react";
-import { NavLink } from "react-router-dom";
+import { useContext, useEffect, useState } from "react";
+import { NavLink, useLocation } from "react-router-dom";
 import CartModal from "./CartModal";
 import { CartContext } from "./CartProvider";
 function Header() {
   const [modalIsOpened, setModalIsOpened] = useState(false);
+  const location = useLocation();
+  useEffect(() => setModalIsOpened(false), [location]);
   const cartItemsAmount = useContext(CartContext).cartState.totalItems;
   return (
     <header className=" bg-sky-600 flex flex-row items-center relative">
       <img src="../../src/images/logo.png" className=" pl-10"></img>
       <h1 className="text-4xl font-bold text-white ml-6">Boxing Gloves Shop</h1>
-      <NavLink to="/shop" className="text-lg font-bold text-white ml-20">Products</NavLink>
+      <NavLink to="/shop" className="text-lg font-bold text-white ml-20">
+        Products
+      </NavLink>
       <button
         className="ml-auto mr-8 bg-white rounded-full p-2 relative"
         onClick={() => setModalIsOpened(!modalIsOpened)}
