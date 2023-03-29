@@ -8,17 +8,17 @@ import Cart from "./components/Cart";
 function App() {
   return (
     <BrowserRouter>
-      <Header></Header>
-      <main style={{ maxWidth: "1280" }}>
-        <ProductsProvider>
-          <CartProvider>
+      <ProductsProvider>
+        <CartProvider>
+          <Header></Header>
+          <main className="max-w-screen-xl relative m-auto">
             <Routes>
               <Route path="/shop" element={<CardList />}></Route>
               <Route path="/cart" element={<Cart />}></Route>
             </Routes>
-          </CartProvider>
-        </ProductsProvider>
-      </main>
+          </main>
+        </CartProvider>
+      </ProductsProvider>
     </BrowserRouter>
   );
 }
