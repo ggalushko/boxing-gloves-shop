@@ -5,4 +5,6 @@ export const products = [
   { id: 3, name: "Hayabusa", price: 199.99 },
   { id: 4, name: "Fairtex", price: 49.99 },
   { id: 5, name: "Grant", price: 1999.99 },
+  { id: 6, name: "Venum", price: 199.99 },
+  { id: 7, name: "Title", price: 89.99 },
 ];
