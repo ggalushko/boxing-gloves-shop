@@ -13,7 +13,15 @@ function Card({ id, title, price }: CardProps) {
   const inCart = cartContext.cartState.items.find((item) => item.id === id);
   const amountInCart = inCart?.quantity.toString() || "";
   return (
-    <article className="bg-white text-black rounded-md mt-3 w-[250px] h-[400px] flex flex-col hover:scale-105 transition-transform duration-200">
+    <article
+      className="bg-white text-black 
+     rounded-md 
+     mt-3 
+     w-[250px]  h-[400px] 
+     flex flex-col 
+     hover:scale-105 transition-transform duration-200 
+      shadow-sm shadow-emerald-100"
+    >
       <img
         src={`../../src/images/id${id}.jpg`}
         alt={`${title} boxing gloves`}
@@ -23,24 +31,20 @@ function Card({ id, title, price }: CardProps) {
       <p className="mb-2">{price}$</p>
 
       {inCart ? (
-        <div className="flex justify-evenly">
-          <p>{amountInCart} In cart</p>
+        <div className="flex justify-evenly items-center pb-5">
+          <p>{amountInCart} in cart</p>
           <button
-            className="bg-green-500 w-12"
-            onClick={() =>
-              updateQuantity("add", cartContext, { id, name: title, price })
-            }
-          >
-            +
-          </button>
-          <button
-            className="bg-red-500 w-12"
+            className="w-9 h-9 bg-cart-minus bg-contain"
             onClick={() =>
               updateQuantity("delete", cartContext, { id, name: title, price })
             }
-          >
-            -
-          </button>
+          ></button>
+          <button
+            className="w-9 h-9 bg-cart-plus bg-contain"
+            onClick={() =>
+              updateQuantity("add", cartContext, { id, name: title, price })
+            }
+          ></button>
         </div>
       ) : (
         <button
