@@ -19,7 +19,7 @@ function CartElement({ id, name, quantity, price }: CartItem) {
         <p className=" text-left">{name}</p>
 
         <button
-          className="flex flex-row items-center justify-center"
+          className="flex flex-row items-center justify-center mt-auto"
           onClick={() =>
             cartContext.dispatch({
               type: cartContext.reducerActions.REMOVE,
@@ -36,8 +36,8 @@ function CartElement({ id, name, quantity, price }: CartItem) {
       </div>
 
       <div className="flex flex-col justify-around ml-auto mr-6">
-        <p className="text-2xl">{itemPrice}</p>
-        <div className="flex flex-row bg-sky-500 rounded-md items-center">
+        <p className="text-2xl">{itemPrice}$</p>
+        <div className="flex flex-row bg-sky-600 rounded-md items-center text-white">
           <button
             className={
               quantity !== 1
