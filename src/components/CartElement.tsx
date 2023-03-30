@@ -19,7 +19,7 @@ function CartElement({ id, name, quantity, price }: CartItem) {
         <p className=" text-left">{name}</p>
 
         <button
-          className="flex flex-row items-center justify-center mt-auto"
+          className="flex flex-row items-center justify-center mt-auto hover:opacity-50 transition-opacity duration-300"
           onClick={() =>
             cartContext.dispatch({
               type: cartContext.reducerActions.REMOVE,

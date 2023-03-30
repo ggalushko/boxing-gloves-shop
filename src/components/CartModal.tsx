@@ -10,7 +10,7 @@ function CartModal() {
     <div
       className=" bg-white absolute top-0 right-0 translate-y-32
      border-zinc-400 border rounded-md z-10 
-      w-96 flex flex-col"
+      w-96 flex flex-col max-h-[450px] overflow-y-scroll"
     >
       {cartProducts
         .sort((a, b) => a.id - b.id)
@@ -25,10 +25,13 @@ function CartModal() {
         ))}
 
       {cartIsEmpty ? (
-        <p className="text-black p-10 text-2xl"> Empty Cart</p>
+        <p className="text-black p-10 text-2xl">Your cart is empty</p>
       ) : (
-        <Link to='/cart'>
-          <button className="bg-green-500 w-32 h-10 text-ml rounded-xl font-bold text-white m-auto mt-7 mb-5">
+        <Link to="/cart">
+          <button
+            className="bg-green-500 w-32 h-10 text-ml rounded-xl font-bold text-white m-auto mt-7 mb-5
+          hover:opacity-75 transition-opacity duration-300"
+          >
             Go to cart
           </button>
         </Link>
