@@ -15,6 +15,7 @@ function CartModalItem({ id, name, quantity, price }: CartItem) {
       <p className="text-[0.85rem]">{quantity}</p>
       <p className="text-[0.85rem]"> {price}</p>
       <button
+      className="hover:opacity-50 transition-opacity duration-300"
         onClick={() =>
           cartContext.dispatch({
             type: cartContext.reducerActions.REMOVE,

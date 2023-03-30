@@ -34,13 +34,13 @@ function Card({ id, title, price }: CardProps) {
         <div className="flex justify-evenly items-center pb-5">
           <p>{amountInCart} in cart</p>
           <button
-            className="w-9 h-9 bg-cart-minus bg-contain"
+            className="w-9 h-9 bg-cart-minus bg-contain hover:opacity-50 transition-opacity duration-300"
             onClick={() =>
               updateQuantity("delete", cartContext, { id, name: title, price })
             }
           ></button>
           <button
-            className="w-9 h-9 bg-cart-plus bg-contain"
+            className="w-9 h-9 bg-cart-plus bg-contain hover:opacity-50 transition-opacity duration-300"
             onClick={() =>
               updateQuantity("add", cartContext, { id, name: title, price })
             }
@@ -48,7 +48,7 @@ function Card({ id, title, price }: CardProps) {
         </div>
       ) : (
         <button
-          className="bg-green-500 text-white rounded-md p-4 hover:opacity-50 transition-opacity duration-500 mb-0"
+          className="bg-green-500 text-white rounded-b-md p-4 hover:opacity-75 transition-opacity duration-300 mb-0"
           onClick={() => {
             cartContext.dispatch({
               type: cartContext.reducerActions.QUANITITY,
