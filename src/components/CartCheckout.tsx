@@ -9,7 +9,7 @@ function CartCheckout() {
   return itemsAmount > 0 ? (
     <div
       className="flex flex-col place-content-center w-64 border h-80
-     bg-white text-black text-2xl rounded-xl gap-20 pb-7 box-content"
+     bg-white text-black text-2xl rounded-xl gap-8 lg:gap-20 pb-7 box-content mx-auto"
     >
       <p className=" mt-10">Items: {itemsAmount}</p>
       <p>

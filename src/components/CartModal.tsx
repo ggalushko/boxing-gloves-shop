@@ -8,9 +8,9 @@ function CartModal() {
   const cartIsEmpty = cartProducts.length === 0;
   return (
     <div
-      className=" bg-white absolute top-0 right-0 translate-y-32
+      className=" bg-white absolute top-0 right-0 translate-y-20 md:translate-y-32
      border-zinc-400 border rounded-md z-10 
-      w-96 flex flex-col max-h-[450px] overflow-y-scroll"
+      w-[320px] md:w-[420px] flex flex-col max-h-[400px] overflow-y-scroll"
     >
       {cartProducts
         .sort((a, b) => a.id - b.id)

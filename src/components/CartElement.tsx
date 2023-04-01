@@ -6,12 +6,15 @@ function CartElement({ id, name, quantity, price }: CartItem) {
   const cartContext = useContext(CartContext);
   const itemPrice = (price * quantity).toFixed(2);
   return (
-    <div className="bg-white text-black flex flex-row gap-10 mb-3 h-[150px] w-[700px] p-7 rounded-xl">
+    <div
+      className="bg-white text-black flex  gap-5 md:gap-10 mb-3 p-3 md:p-7 rounded-xl
+     h-[140px] md:h-[150px] md:w-[520px]"
+    >
       <div className="w-[85px]">
         <img
           src={`../src/images/id${id}.jpg`}
           alt="a"
-          className="bg-contain bg-center"
+          className="bg-contain bg-center w-full"
         />
       </div>
 
@@ -35,33 +38,26 @@ function CartElement({ id, name, quantity, price }: CartItem) {
         </button>
       </div>
 
-      <div className="flex flex-col justify-around ml-auto mr-6">
-        <p className="text-2xl">{itemPrice}$</p>
-        <div className="flex flex-row bg-sky-600 rounded-md items-center text-white">
+      <div className="flex flex-col justify-around ml-auto md:mr-6">
+        <p className="text-lg md:text-2xl">{itemPrice}$</p>
+        <div className="grid grid-cols-3 w-[90px] bg-sky-600 rounded-md items-center text-white">
           <button
-            className={
-              quantity !== 1
-                ? "w-[40px] h-[40px]"
-                : "w-[40px] h-[40px] pointer-events-none"
-            }
+            className={`${quantity == 1 ? " pointer-events-none" : ""}`}
             onClick={() =>
               updateQuantity("delete", cartContext, { id, name, price })
             }
           >
-            <span
-              className={quantity !== 1 ? "text-xl" : "text-xl text-gray-500"}
-            >
+            <p className={quantity !== 1 ? "text-xl" : "text-xl text-gray-500"}>
               -
-            </span>
+            </p>
           </button>
-          <p className="text-xl w-11">{quantity}</p>
+          <p className="text-xl">{quantity}</p>
           <button
-            className="w-[40px] h-[40px]"
             onClick={() =>
               updateQuantity("add", cartContext, { id, name, price })
             }
           >
-            <span className="text-xl">+</span>
+            <p className="text-xl">+</p>
           </button>
         </div>
       </div>

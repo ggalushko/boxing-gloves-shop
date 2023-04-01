@@ -17,7 +17,7 @@ function Card({ id, title, price }: CardProps) {
       className="bg-white text-black 
      rounded-md 
      mt-3 
-     w-[250px]  h-[400px] 
+     md:w-[250px]  md:h-[400px] w-[175px] h-[280px]
      flex flex-col 
      hover:scale-105 transition-transform duration-200 
       shadow-sm shadow-emerald-100"
@@ -25,7 +25,7 @@ function Card({ id, title, price }: CardProps) {
       <img
         src={`../../src/images/id${id}.jpg`}
         alt={`${title} boxing gloves`}
-        className="bg-cover w-[200px] bg-center mt-6 ml-auto mr-auto mb-auto"
+        className="bg-cover w-[110px] md:w-[200px] bg-center mt-6 ml-auto mr-auto mb-auto"
       />
       <h3 className="mb-2">{title}</h3>
       <p className="mb-2">{price}$</p>
