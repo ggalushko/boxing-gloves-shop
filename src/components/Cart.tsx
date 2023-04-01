@@ -1,5 +1,5 @@
 import CartCheckout from "./CartCheckout";
-import CartProducts from "./CartProducts";
+import CartProducts from "./CartProductList";
 
 function Cart() {
   return (
