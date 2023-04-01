@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import CartElement from "./CartElement";
+import CartProduct from "./CartProduct";
 import { CartContext } from "./CartProvider";
 
 function CartProducts() {
@@ -10,12 +10,12 @@ function CartProducts() {
         .sort((a, b) => a.id - b.id)
         .map((item) => (
           <li key={item.id}>
-            <CartElement
+            <CartProduct
               id={item.id}
               name={item.name}
               quantity={item.quantity}
               price={item.price}
-            ></CartElement>
+            ></CartProduct>
           </li>
         ))}
     </ul>
