@@ -7,8 +7,10 @@ import {
 } from "react";
 
 enum ACTIONS {
+  ADD = "ADD",
   REMOVE = "REMOVE",
-  QUANITITY = "QUANTITY",
+  CHANGE_QUANITITY = "CHANGE_QUANTITY",
+  CLEAR_CART = "CLEAR_CART",
 }
 
 export type CartItem = {
@@ -24,14 +26,15 @@ type Cart = {
   totalPrice: number;
 };
 
-type CartAction = {
-  type: string;
-  item: CartItem;
-};
-
-function reducer(cart: Cart, action: CartAction): Cart {
+function reducer(
+  cart: Cart,
+  action: {
+    type: string;
+    payload?: { id: number; quantity?: number; price?: number; name?: string };
+  }
+): Cart {
   const getFilteredItems = (items: CartItem[]) =>
-    items.filter((item) => item.id !== action.item.id);
+    items.filter((item) => item.id !== action.payload!.id);
   const getItemsPrice = (items: CartItem[]) =>
     parseFloat(
       items
@@ -42,6 +45,23 @@ function reducer(cart: Cart, action: CartAction): Cart {
     items.reduce((counter, item) => counter + item.quantity, 0);
 
   switch (action.type) {
+    case ACTIONS.ADD: {
+      const newItems = [
+        ...cart.items,
+        {
+          id: action.payload!.id,
+          name: action.payload!.name!,
+          price: action.payload!.price!,
+          quantity: 1,
+        },
+      ];
+      return {
+        items: newItems,
+        totalItems: getItemsAmount(newItems),
+        totalPrice: getItemsPrice(newItems),
+      };
+    }
+
     case ACTIONS.REMOVE: {
       const newItems = getFilteredItems(cart.items);
       return {
@@ -51,12 +71,27 @@ function reducer(cart: Cart, action: CartAction): Cart {
       };
     }
 
-    case ACTIONS.QUANITITY: {
-      const newItems = [...getFilteredItems(cart.items), action.item];
+    case ACTIONS.CHANGE_QUANITITY: {
+      const updatedItem = cart.items.find(
+        (item) => item.id == action.payload!.id
+      );
+      updatedItem!.quantity = action.payload!.quantity!;
+      const newItems: CartItem[] = [
+        ...getFilteredItems(cart.items),
+        updatedItem!,
+      ];
       return {
         items: newItems,
         totalItems: getItemsAmount(newItems),
         totalPrice: getItemsPrice(newItems),
+      };
+    }
+    case ACTIONS.CLEAR_CART: {
+      const newItems: CartItem[] = [];
+      return {
+        items: newItems,
+        totalItems: 0,
+        totalPrice: 0,
       };
     }
     default:
@@ -80,20 +115,16 @@ function useCartReducer(initState: Cart) {
 
 export type UseCartReducer = ReturnType<typeof useCartReducer>;
 
-const initCartContextState = {
-  cartState: {
-    items: [],
-    totalItems: 0,
-    totalPrice: 0,
-  },
-  dispatch: () => {},
-  reducerActions: ACTIONS,
-};
-
 const emptyCart: Cart = {
   items: [],
   totalItems: 0,
   totalPrice: 0,
+};
+
+const initCartContextState = {
+  cartState: emptyCart,
+  dispatch: () => {},
+  reducerActions: ACTIONS,
 };
 
 const localStorageIsEmpty = !localStorage.getItem("cart");

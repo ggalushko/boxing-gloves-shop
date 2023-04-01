@@ -35,15 +35,11 @@ function Card({ id, title, price }: CardProps) {
           <p>{amountInCart} in cart</p>
           <button
             className="w-9 h-9 bg-cart-minus bg-contain hover:opacity-50 transition-opacity duration-300"
-            onClick={() =>
-              updateQuantity("delete", cartContext, { id, name: title, price })
-            }
+            onClick={() => updateQuantity(cartContext, id, -1)}
           ></button>
           <button
             className="w-9 h-9 bg-cart-plus bg-contain hover:opacity-50 transition-opacity duration-300"
-            onClick={() =>
-              updateQuantity("add", cartContext, { id, name: title, price })
-            }
+            onClick={() => updateQuantity(cartContext, id, 1)}
           ></button>
         </div>
       ) : (
@@ -51,8 +47,8 @@ function Card({ id, title, price }: CardProps) {
           className="bg-green-500 text-white rounded-b-md p-4 hover:opacity-75 transition-opacity duration-300 mb-0"
           onClick={() => {
             cartContext.dispatch({
-              type: cartContext.reducerActions.QUANITITY,
-              item: { id: id, name: title, quantity: 1, price: price },
+              type: cartContext.reducerActions.ADD,
+              payload: { id: id, name: title, quantity: 1, price: price },
             });
           }}
         >

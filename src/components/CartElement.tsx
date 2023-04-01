@@ -26,7 +26,7 @@ function CartElement({ id, name, quantity, price }: CartItem) {
           onClick={() =>
             cartContext.dispatch({
               type: cartContext.reducerActions.REMOVE,
-              item: { id, name, quantity, price },
+              payload: { id: id },
             })
           }
         >
@@ -43,20 +43,14 @@ function CartElement({ id, name, quantity, price }: CartItem) {
         <div className="grid grid-cols-3 w-[90px] bg-sky-600 rounded-md items-center text-white">
           <button
             className={`${quantity == 1 ? " pointer-events-none" : ""}`}
-            onClick={() =>
-              updateQuantity("delete", cartContext, { id, name, price })
-            }
+            onClick={() => updateQuantity(cartContext, id, -1)}
           >
             <p className={quantity !== 1 ? "text-xl" : "text-xl text-gray-500"}>
               -
             </p>
           </button>
           <p className="text-xl">{quantity}</p>
-          <button
-            onClick={() =>
-              updateQuantity("add", cartContext, { id, name, price })
-            }
-          >
+          <button onClick={() => updateQuantity(cartContext, id, 1)}>
             <p className="text-xl">+</p>
           </button>
         </div>

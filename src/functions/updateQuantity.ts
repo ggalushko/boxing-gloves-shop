@@ -1,53 +1,27 @@
 import { UseCartReducer } from "../components/CartProvider";
 
-type Product = {
-  id: number;
-  name: string;
-  price: number;
-};
-
 export function updateQuantity(
-  action: "add" | "delete",
   cartContext: UseCartReducer,
-  product: Product
+  id: number,
+  quantity: number
 ) {
   const itemToChange = cartContext.cartState.items.find(
-    (item) => item.id === product.id
+    (item) => item.id === id
   );
   const currQuantity = itemToChange!.quantity;
-
-  switch (action) {
-    case "add":
-      cartContext.dispatch({
-        type: cartContext.reducerActions.QUANITITY,
-        item: {
-          id: product.id,
-          name: product.name,
-          quantity: currQuantity + 1,
-          price: product.price,
+  const newQuantity = currQuantity + quantity;
+  newQuantity > 0
+    ? cartContext.dispatch({
+        type: cartContext.reducerActions.CHANGE_QUANITITY,
+        payload: {
+          id: id,
+          quantity: newQuantity,
+        },
+      })
+    : cartContext.dispatch({
+        type: cartContext.reducerActions.REMOVE,
+        payload: {
+          id: id,
         },
       });
-      break;
-    case "delete":
-      currQuantity - 1 > 0
-        ? cartContext.dispatch({
-            type: cartContext.reducerActions.QUANITITY,
-            item: {
-              id: product.id,
-              name: product.name,
-              quantity: currQuantity - 1,
-              price: product.price,
-            },
-          })
-        : cartContext.dispatch({
-            type: cartContext.reducerActions.REMOVE,
-            item: {
-              id: product.id,
-              name: product.name,
-              quantity: currQuantity,
-              price: product.price,
-            },
-          });
-      break;
-  }
 }

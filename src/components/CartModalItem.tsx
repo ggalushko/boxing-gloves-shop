@@ -4,6 +4,7 @@ import { CartItem } from "./CartProvider";
 
 function CartModalItem({ id, name, quantity, price }: CartItem) {
   const cartContext = useContext(CartContext);
+  const itemPrice = (price * quantity).toFixed(2);
 
   return (
     <div className=" text-black grid relative grid-cols-5 justify-between p-5 items-center">
@@ -13,13 +14,13 @@ function CartModalItem({ id, name, quantity, price }: CartItem) {
       />
       <p className="text-[0.85rem]">{name}</p>
       <p className="text-[0.85rem]">{quantity}</p>
-      <p className="text-[0.85rem]"> {quantity * price}</p>
+      <p className="text-[0.85rem]"> {itemPrice}</p>
       <button
         className="hover:opacity-50 transition-opacity duration-300"
         onClick={() =>
           cartContext.dispatch({
             type: cartContext.reducerActions.REMOVE,
-            item: { id, name, quantity, price },
+            payload: {id: id}
           })
         }
       >
