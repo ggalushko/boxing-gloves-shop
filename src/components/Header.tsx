@@ -18,12 +18,12 @@ function Header() {
         Boxing Gloves Shop
       </h1>
       <NavLink
-        to="/"
+        to="/boxing-gloves-shop"
         className=" text-sm xl:text-lg text-white md:ml-20 ml-5 mr-5"
       >
         Products
       </NavLink>
-      {location.pathname === "/cart" ? null : (
+      {location.pathname === "/boxing-gloves-shop/cart" ? null : (
         <CartButton modal={modalIsOpened} setModal={setModalIsOpened} />
       )}
       {modalIsOpened ? <CartModal /> : null}

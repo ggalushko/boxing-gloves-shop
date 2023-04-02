@@ -10,7 +10,7 @@ function ThankYou() {
       <p className={paragraphStyle}> Thank you for your purchase</p>
       <p className={paragraphStyle}> Happy boxing!</p>
       <p className={paragraphStyle}>
-        <Link to="/">
+        <Link to="/boxing-gloves-shop">
           <span className=" text-blue-600 cursor-pointer hover:opacity-75 transition-opacity duration-300">
             Return{" "}
           </span>
