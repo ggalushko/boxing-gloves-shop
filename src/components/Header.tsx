@@ -18,7 +18,7 @@ function Header() {
         Boxing Gloves Shop
       </h1>
       <NavLink
-        to="/shop"
+        to="/"
         className=" text-sm xl:text-lg text-white md:ml-20 ml-5 mr-5"
       >
         Products

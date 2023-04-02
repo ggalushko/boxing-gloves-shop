@@ -15,7 +15,7 @@ function App() {
           <Header />
           <main className="max-w-screen-xl relative m-auto">
             <Routes>
-              <Route path="/shop" element={<CardList />}></Route>
+              <Route path="/" element={<CardList />}></Route>
               <Route path="/cart" element={<Cart />}></Route>
               <Route path="/thank-you" element={<ThankYou />}></Route>
             </Routes>
