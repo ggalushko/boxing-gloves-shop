@@ -4,8 +4,8 @@ module.exports = {
   theme: {
     extend: {
       backgroundImage: {
-        'cart-minus': "url(src/images/cart-minus.svg)",
-        'cart-plus': "url(src/images/cart-plus.svg)"
+        'cart-minus': "url(assets/images/cart-minus.svg)",
+        'cart-plus': "url(assets/images/cart-plus.svg)"
       }
     },
   },

@@ -11,7 +11,7 @@ function Header() {
   return (
     <header className=" bg-sky-600 flex flex-row items-center relative p-2">
       <img
-        src="../../src/images/logo.png"
+        src="../../assets/images/logo.png"
         className="w-[54px] md:w-[96px] md:ml-10 ml-2 "
       ></img>
       <h1 className=" md:text-2xl font-bold text-white ml-6 xl:text-4xl text-sm">

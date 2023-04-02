@@ -10,7 +10,7 @@ function CartModalItem({ id, name, quantity, price }: CartItem) {
   return (
     <div className=" text-black grid relative grid-cols-5 justify-between p-5 items-center">
       <img
-        src={`../../src/images/id${id}.jpg`}
+        src={`../../assets/images/id${id}.jpg`}
         className="w-10 bg-center bg-contain"
       />
       <p className={paragraphStyle}>{name}</p>
@@ -26,7 +26,7 @@ function CartModalItem({ id, name, quantity, price }: CartItem) {
         }
       >
         <img
-          src="../../src/images/cart-delete.svg"
+          src="../../assets/images/cart-delete.svg"
           className="w-7 bg-contain bg-center ml-5"
           alt="aa"
         />

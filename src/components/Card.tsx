@@ -23,7 +23,7 @@ function Card({ id, title, price }: CardProps) {
       shadow-sm shadow-emerald-100"
     >
       <img
-        src={`../../src/images/id${id}.jpg`}
+        src={`../../assets/images/id${id}.jpg`}
         alt={`${title} boxing gloves`}
         className="bg-cover w-[110px] md:w-[200px] bg-center mt-6 mx-auto mb-auto"
       />
