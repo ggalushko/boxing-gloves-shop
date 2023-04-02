@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { Link } from "react-router-dom";
 import CartModalItem from "./CartModalItem";
-import { CartContext } from "./CartProvider";
+import { CartContext } from "../context/CartProvider";
 
 function CartModal() {
   const cartProducts = useContext(CartContext).cartState.items;

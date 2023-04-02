@@ -1,4 +1,4 @@
-import { UseCartReducer } from "../components/CartProvider";
+import { UseCartReducer } from "../context/CartProvider";
 
 export function updateQuantity(
   cartContext: UseCartReducer,

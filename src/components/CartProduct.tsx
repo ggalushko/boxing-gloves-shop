@@ -1,4 +1,4 @@
-import { CartContext, CartItem } from "./CartProvider";
+import { CartContext, CartItem } from "../context/CartProvider";
 import { useContext } from "react";
 import CartProductCounter from "./CartProductCounter";
 
@@ -13,13 +13,13 @@ function CartElement({ id, name, quantity, price }: CartItem) {
       <div className="w-[85px]">
         <img
           src={`../src/images/id${id}.jpg`}
-          alt="a"
+          alt={`${name} boxing gloves`}
           className="bg-contain bg-center w-full"
         />
       </div>
 
       <div className="flex flex-col">
-        <p className=" text-left">{name}</p>
+        <p className="text-left">{name}</p>
 
         <button
           className="flex flex-row items-center justify-center mt-auto hover:opacity-50 transition-opacity duration-300"

@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { CartContext } from "./CartProvider";
+import { CartContext } from "../context/CartProvider";
 import { updateQuantity } from "../functions/updateQuantity";
 
 type CardProps = {
@@ -25,7 +25,7 @@ function Card({ id, title, price }: CardProps) {
       <img
         src={`../../src/images/id${id}.jpg`}
         alt={`${title} boxing gloves`}
-        className="bg-cover w-[110px] md:w-[200px] bg-center mt-6 ml-auto mr-auto mb-auto"
+        className="bg-cover w-[110px] md:w-[200px] bg-center mt-6 mx-auto mb-auto"
       />
       <h3 className="mb-2">{title}</h3>
       <p className="mb-2">{price}$</p>

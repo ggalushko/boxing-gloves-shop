@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { updateQuantity } from "../functions/updateQuantity";
-import { CartContext } from "./CartProvider";
+import { CartContext } from "../context/CartProvider";
 
 type PropsType = {
   itemPrice: string;

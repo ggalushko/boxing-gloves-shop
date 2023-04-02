@@ -1,6 +1,6 @@
 import { createRef, useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { CartContext } from "./CartProvider";
+import { CartContext } from "../context/CartProvider";
 
 function CartCheckout() {
   const cartContext = useContext(CartContext);

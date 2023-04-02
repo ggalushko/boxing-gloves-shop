@@ -1,10 +1,11 @@
 import { useContext } from "react";
-import { CartContext } from "./CartProvider";
-import { CartItem } from "./CartProvider";
+import { CartContext } from "../context/CartProvider";
+import { CartItem } from "../context/CartProvider";
 
 function CartModalItem({ id, name, quantity, price }: CartItem) {
   const cartContext = useContext(CartContext);
   const itemPrice = (price * quantity).toFixed(2);
+  const paragraphStyle = "text-[0.85rem]";
 
   return (
     <div className=" text-black grid relative grid-cols-5 justify-between p-5 items-center">
@@ -12,15 +13,15 @@ function CartModalItem({ id, name, quantity, price }: CartItem) {
         src={`../../src/images/id${id}.jpg`}
         className="w-10 bg-center bg-contain"
       />
-      <p className="text-[0.85rem]">{name}</p>
-      <p className="text-[0.85rem]">{quantity}</p>
-      <p className="text-[0.85rem]"> {itemPrice}</p>
+      <p className={paragraphStyle}>{name}</p>
+      <p className={paragraphStyle}>{quantity}</p>
+      <p className={paragraphStyle}> {itemPrice}</p>
       <button
         className="hover:opacity-50 transition-opacity duration-300"
         onClick={() =>
           cartContext.dispatch({
             type: cartContext.reducerActions.REMOVE,
-            payload: {id: id}
+            payload: { id: id },
           })
         }
       >
