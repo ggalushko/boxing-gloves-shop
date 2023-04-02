@@ -16,7 +16,7 @@ function CartButton({ modal, setModal }: props) {
         onClick={() => setModal(!modal)}
       >
         <img
-          src="../../assets/images/cart.png"
+          src="assets/images/cart.png"
           className="w-8 h-8 md:w-10 md:h-10  "
         ></img>
         <p

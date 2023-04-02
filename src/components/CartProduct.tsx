@@ -12,7 +12,7 @@ function CartElement({ id, name, quantity, price }: CartItem) {
     >
       <div className="w-[85px]">
         <img
-          src={`../../assets/images/id${id}.jpg`}
+          src={`assets/images/id${id}.jpg`}
           alt={`${name} boxing gloves`}
           className="bg-contain bg-center w-full"
         />
@@ -31,7 +31,7 @@ function CartElement({ id, name, quantity, price }: CartItem) {
           }
         >
           <img
-            src="../../assets/images/cross.svg"
+            src="assets/images/cross.svg"
             className="w-[40px] bg-contain bg-center"
           ></img>
           Delete
