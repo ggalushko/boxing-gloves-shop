@@ -15,10 +15,10 @@ function App() {
           <Header />
           <main className="max-w-screen-xl relative m-auto">
             <Routes>
-              <Route path="/boxing-gloves-shop" element={<CardList />}></Route>
-              <Route path="/boxing-gloves-shop/cart" element={<Cart />}></Route>
+              <Route path="/" element={<CardList />}></Route>
+              <Route path="/cart" element={<Cart />}></Route>
               <Route
-                path="/boxing-gloves-shop/thank-you"
+                path="/thank-you"
                 element={<ThankYou />}
               ></Route>
             </Routes>

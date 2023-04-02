@@ -27,7 +27,7 @@ function CartModal() {
       {cartIsEmpty ? (
         <p className="text-black p-10 text-2xl">Your cart is empty</p>
       ) : (
-        <Link to="/boxing-gloves-shop/cart">
+        <Link to="/cart">
           <button
             className="bg-green-500 w-32 h-10 text-ml rounded-xl font-bold text-white m-auto mt-7 mb-5
           hover:opacity-75 transition-opacity duration-300"
