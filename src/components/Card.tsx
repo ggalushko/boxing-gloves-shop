@@ -2,13 +2,13 @@ import { useContext } from "react";
 import { CartContext } from "../context/CartProvider";
 import { updateQuantity } from "../functions/updateQuantity";
 
-type CardProps = {
+type Props = {
   id: number;
   title: string;
   price: number;
 };
 
-function Card({ id, title, price }: CardProps) {
+export function Card({ id, title, price }: Props) {
   const cartContext = useContext(CartContext);
   const inCart = cartContext.cartState.items.find((item) => item.id === id);
   const amountInCart = inCart?.quantity.toString() || "";
@@ -58,5 +58,3 @@ function Card({ id, title, price }: CardProps) {
     </article>
   );
 }
-
-export default Card;

@@ -2,13 +2,13 @@ import { useContext } from "react";
 import { updateQuantity } from "../functions/updateQuantity";
 import { CartContext } from "../context/CartProvider";
 
-type PropsType = {
+type Props = {
   itemPrice: string;
   quantity: number;
   id: number;
 };
 
-function CartProductCounter({ itemPrice, quantity, id }: PropsType) {
+export function CartProductCounter({ itemPrice, quantity, id }: Props) {
   const cartContext = useContext(CartContext);
   return (
     <div className="flex flex-col justify-around ml-auto md:mr-6">
@@ -30,5 +30,3 @@ function CartProductCounter({ itemPrice, quantity, id }: PropsType) {
     </div>
   );
 }
-
-export default CartProductCounter;

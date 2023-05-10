@@ -1,8 +1,8 @@
 import { useContext } from "react";
-import CartProduct from "./CartProduct";
+import { CartProduct } from "./CartProduct";
 import { CartContext } from "../context/CartProvider";
 
-function CartProducts() {
+export function CartProducts() {
   const cartItems = useContext(CartContext).cartState.items;
   return (
     <ul className="flex flex-col">
@@ -21,5 +21,3 @@ function CartProducts() {
     </ul>
   );
 }
-
-export default CartProducts;

@@ -20,7 +20,7 @@ export const ProductsContext = createContext<Product[]>([
 export default function ProductsProvider({
   children,
 }: ContextChildren): ReactElement {
-  const [products, setProducts] = useState(initProducts);
+  const products = initProducts;
   return (
     <ProductsContext.Provider value={products}>
       {children}

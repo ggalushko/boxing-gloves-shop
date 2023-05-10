@@ -2,12 +2,13 @@ import { createRef, useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { CartContext } from "../context/CartProvider";
 
-function CartCheckout() {
+export function CartCheckout() {
   const cartContext = useContext(CartContext);
   const itemsAmount = cartContext.cartState.totalItems;
   const price = cartContext.cartState.totalPrice;
   const navigate = useNavigate();
   const buyButtonRef: React.RefObject<HTMLButtonElement> = createRef();
+
   return itemsAmount > 0 ? (
     <div
       className="flex flex-col place-content-center w-64 border h-80
@@ -53,4 +54,3 @@ function CartCheckout() {
     </div>
   );
 }
-export default CartCheckout;

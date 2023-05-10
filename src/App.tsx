@@ -1,11 +1,7 @@
-import Header from "./components/Header";
+import { Routes, Route } from "react-router-dom";
+import { Header, Cart, CardList, ThankYou, Footer } from "./components";
 import ProductsProvider from "./context/ProductsProvider";
 import CartProvider from "./context/CartProvider";
-import CardList from "./components/CardList";
-import { Routes, Route } from "react-router-dom";
-import Cart from "./components/Cart";
-import ThankYou from "./components/ThankYou";
-import Footer from "./components/Footer";
 
 function App() {
   return (
@@ -15,12 +11,9 @@ function App() {
           <Header />
           <main className="max-w-screen-xl relative m-auto">
             <Routes>
-              <Route path="/" element={<CardList />}></Route>
-              <Route path="/cart" element={<Cart />}></Route>
-              <Route
-                path="/thank-you"
-                element={<ThankYou />}
-              ></Route>
+              <Route path="/" element={<CardList />} />
+              <Route path="/cart" element={<Cart />} />
+              <Route path="/thank-you" element={<ThankYou />} />
             </Routes>
           </main>
         </CartProvider>

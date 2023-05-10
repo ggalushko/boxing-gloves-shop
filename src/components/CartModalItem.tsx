@@ -2,7 +2,7 @@ import { useContext } from "react";
 import { CartContext } from "../context/CartProvider";
 import { CartItem } from "../context/CartProvider";
 
-function CartModalItem({ id, name, quantity, price }: CartItem) {
+export function CartModalItem({ id, name, quantity, price }: CartItem) {
   const cartContext = useContext(CartContext);
   const itemPrice = (price * quantity).toFixed(2);
   const paragraphStyle = "text-[0.85rem]";
@@ -34,5 +34,3 @@ function CartModalItem({ id, name, quantity, price }: CartItem) {
     </div>
   );
 }
-
-export default CartModalItem;

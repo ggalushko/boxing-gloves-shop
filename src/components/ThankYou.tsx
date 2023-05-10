@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-function ThankYou() {
+export function ThankYou() {
   const paragraphStyle = "text-black text-xl md:text-5xl";
 
   return (
@@ -20,5 +20,3 @@ function ThankYou() {
     </div>
   );
 }
-
-export default ThankYou;

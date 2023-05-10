@@ -1,9 +1,9 @@
 import { useContext } from "react";
 import { Link } from "react-router-dom";
-import CartModalItem from "./CartModalItem";
+import { CartModalItem } from "./CartModalItem";
 import { CartContext } from "../context/CartProvider";
 
-function CartModal() {
+export function CartModal() {
   const cartProducts = useContext(CartContext).cartState.items;
   const cartIsEmpty = cartProducts.length === 0;
   return (
@@ -39,5 +39,3 @@ function CartModal() {
     </div>
   );
 }
-
-export default CartModal;

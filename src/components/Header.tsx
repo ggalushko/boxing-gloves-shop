@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import { NavLink, useLocation } from "react-router-dom";
-import CartButton from "./CartButton";
-import CartModal from "./CartModal";
+import { CartButton } from "./CartButton";
+import { CartModal } from "./CartModal";
 
-function Header() {
+export function Header() {
   const [modalIsOpened, setModalIsOpened] = useState(false);
   const location = useLocation();
   useEffect(() => setModalIsOpened(false), [location]);
@@ -30,5 +30,3 @@ function Header() {
     </header>
   );
 }
-
-export default Header;

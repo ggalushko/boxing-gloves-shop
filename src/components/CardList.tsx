@@ -1,8 +1,8 @@
 import { useContext } from "react";
-import Card from "./Card";
+import { Card } from "./Card";
 import { ProductsContext } from "../context/ProductsProvider";
 
-function CardList() {
+export function CardList() {
   const products = useContext(ProductsContext);
   return (
     <div className="m-auto flex justify-center pl-18 pr-18 mt-12">
@@ -17,4 +17,3 @@ function CardList() {
   );
 }
 
-export default CardList;

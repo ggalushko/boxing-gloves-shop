@@ -1,8 +1,8 @@
 import { CartContext, CartItem } from "../context/CartProvider";
 import { useContext } from "react";
-import CartProductCounter from "./CartProductCounter";
+import { CartProductCounter } from "./CartProductCounter";
 
-function CartElement({ id, name, quantity, price }: CartItem) {
+export function CartProduct({ id, name, quantity, price }: CartItem) {
   const cartContext = useContext(CartContext);
   const itemPrice = (price * quantity).toFixed(2);
   return (
@@ -42,5 +42,3 @@ function CartElement({ id, name, quantity, price }: CartItem) {
     </div>
   );
 }
-
-export default CartElement;

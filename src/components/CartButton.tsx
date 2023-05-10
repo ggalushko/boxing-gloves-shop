@@ -1,12 +1,12 @@
 import React, { useContext } from "react";
 import { CartContext } from "../context/CartProvider";
 
-type props = {
+type Props = {
   modal: boolean;
   setModal: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
-function CartButton({ modal, setModal }: props) {
+export function CartButton({ modal, setModal }: Props) {
   const cartItemsAmount = useContext(CartContext).cartState.totalItems;
   return (
     <>
@@ -29,5 +29,3 @@ function CartButton({ modal, setModal }: props) {
     </>
   );
 }
-
-export default CartButton;
