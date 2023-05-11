@@ -1,7 +1,7 @@
 # Boxing gloves shop
 
 ## Обзор
-![image of website](https://psv4.userapi.com/c237231/u499681540/docs/d28/c5a713a55ac9/rsz_bgs.jpg?extra=LtUAPix6tYgI3mPN-Ci1PMul0LcVsTQ1QmEhCTWiu4OHqXkPx7Z5apD3bKQ59QsdGgs8qmSNmiHo6-NZX4loD9q1UJAJ7f_m_JYydo82bAWocMCiZaElvhNiSUJoagWoofzliw6jVucv9OeaGo99mD0)
+![image of website](https://psv4.userapi.com/c237231/u499681540/docs/d28/edb74c98331f/rsz_bgs.jpg?extra=2oHXz0YArMS2wjm2xbdzb0wTkyouIBgfXvKKQwtHZnAQos9EiGfZdbbWNMqxO9GtJqWzaTpZXQHPo1uH1UZGSSO8nBkbi8PJsruZsT79nAqZUnXQOrf3ePwlw-4IHu8HaGPr-JsAH1mX_vVlOVXUams)
 
 Небольшое приложение, стилизованное под онлайн-магазин по продаже боксерских перчаток. Можно добавлять товары в корзину, изменять их количество. Есть имитация процесса покупки.
 
